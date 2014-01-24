@@ -15,6 +15,12 @@ p {
     font-size: 0.9em;
 }
 
+p.radio {
+    padding: 5px;
+    font-weight: 100;
+    font-size: 0.9em;
+}
+
 hr {
     padding: 20px;
     background-color: #0094ff;
@@ -30,9 +36,25 @@ body {
 #container {
     border: 1px solid #000;
     width: 50%;
+    min-width: 300px;
     margin: 5% auto;
 }
 
 .formItems {
     margin: 15px;
+}
+
+div.formItems span {
+    color: #f00;
+}
+
+#ValidationSummary {
+    border: 2px solid #f00;
+    width: 40%;
+    margin-left: 2%;
+    padding: 20px;
+}
+
+#ValidationSummary ul li {
+    margin-left: 20px;
 }
