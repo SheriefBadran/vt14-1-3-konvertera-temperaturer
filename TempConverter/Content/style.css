@@ -53,8 +53,10 @@ div.formItems span {
     width: 40%;
     margin-left: 2%;
     padding: 20px;
+    font-weight: bold;
 }
 
 #ValidationSummary ul li {
     margin-left: 20px;
+    font-weight: 100;
 }
