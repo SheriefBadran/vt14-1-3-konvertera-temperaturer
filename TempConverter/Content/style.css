@@ -28,16 +28,32 @@ hr {
     margin-bottom: 5%;
 }
 
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     height: 100%;
     width: 100%;
 }
 
 #container {
-    border: 1px solid #000;
+    position: relative;
+    border: 2px solid #000;
     width: 50%;
     min-width: 300px;
+    height: 600px;
     margin: 5% auto;
+}
+
+#leftColumn {
+    position: relative;
+    float: left;
+}
+
+#rightColumn {
+    position: relative;
 }
 
 .formItems {
@@ -46,12 +62,13 @@ body {
 
 div.formItems span {
     color: #f00;
+    width: 50%;
 }
 
 #ValidationSummary {
     border: 2px solid #f00;
-    width: 40%;
-    margin-left: 2%;
+    width: 100%;
+    margin-left: 15px;
     padding: 20px;
     font-weight: bold;
 }

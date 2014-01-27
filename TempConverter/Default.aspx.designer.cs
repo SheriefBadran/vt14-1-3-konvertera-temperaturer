@@ -49,6 +49,15 @@ namespace TempConverter {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorStart;
         
         /// <summary>
+        /// CompareValidatorStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorStart;
+        
+        /// <summary>
         /// EndTempTextBox control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace TempConverter {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorEnd;
         
         /// <summary>
+        /// CompareValidatorEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorEnd;
+        
+        /// <summary>
         /// TempScaleTextBox control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace TempConverter {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorScale;
+        
+        /// <summary>
+        /// CompareValidatorScale control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorScale;
         
         /// <summary>
         /// CF_RadioButton control.
@@ -110,5 +137,14 @@ namespace TempConverter {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ConvertButton;
+        
+        /// <summary>
+        /// TempConvertResultTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table TempConvertResultTable;
     }
 }
