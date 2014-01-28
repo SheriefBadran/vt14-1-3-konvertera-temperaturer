@@ -11,12 +11,12 @@ namespace TempConverter.Model
         public static int CelsiusToFahrenheit(this int degreesC)
         {
             
-            return (int)(degreesC * 1.8 + 32);
+            return degreesC * 9/5 + 32;
         }
 
         public static int FahrenheitToCelcius(this int degreesF)
         {
-            return (int)((degreesF - 32) * (5/9));
+            return (degreesF - 32) * 5 / 9;
         }
     }
 }

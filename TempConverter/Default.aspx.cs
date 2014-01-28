@@ -38,10 +38,11 @@ namespace TempConverter
                 int cellsPerRow = 2;
 
 
-                for (int rows = 0; rows < maxTemp; rows += TSR)
+                for (int rows = startTemp; rows <= maxTemp; rows += TSR)
                 {
                     // Calculate current temp to convert.
-                    tempToConvert = rows == 0 ? startTemp : startTemp += TSR;
+                    //tempToConvert = rows == 0 ? startTemp : startTemp += TSR;
+                    tempToConvert = rows;
 
                     // Create new table row and add it to the table.
                     TableRow tr = new TableRow();
