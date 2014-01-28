@@ -85,6 +85,15 @@ namespace TempConverter {
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorEnd;
         
         /// <summary>
+        /// CompareValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator;
+        
+        /// <summary>
         /// TempScaleTextBox control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace TempConverter {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorScale;
+        
+        /// <summary>
+        /// RangeValidatorScale control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidatorScale;
         
         /// <summary>
         /// CF_RadioButton control.
@@ -146,5 +164,23 @@ namespace TempConverter {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TempConvertResultTable;
+        
+        /// <summary>
+        /// FirstHeaderCell control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderCell FirstHeaderCell;
+        
+        /// <summary>
+        /// SecondHeaderCell control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderCell SecondHeaderCell;
     }
 }

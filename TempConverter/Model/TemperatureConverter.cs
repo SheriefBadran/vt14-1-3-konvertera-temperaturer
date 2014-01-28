@@ -7,16 +7,15 @@ namespace TempConverter.Model
 {
     static class TemperatureConverter
     {
-        // Static Methods.S
+        // Static Methods.
         public static int CelsiusToFahrenheit(this int degreesC)
         {
-            
             return degreesC * 9/5 + 32;
         }
 
         public static int FahrenheitToCelcius(this int degreesF)
         {
-            return (degreesF - 32) * 5 / 9;
+            return (degreesF - 32) * 5/9;
         }
     }
 }

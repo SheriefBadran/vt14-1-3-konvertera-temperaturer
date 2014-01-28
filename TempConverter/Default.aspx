@@ -20,27 +20,32 @@
                 <div class="formItems">
                     <p>Starttemperatur:</p>
                     <asp:TextBox ID="StartTempTextBox" runat="server"></asp:TextBox>
+
+                    <%-- Validation --%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorStart" runat="server" ErrorMessage="Fyll i en starttemperatur." Text="*" Display="Dynamic" ControlToValidate="StartTempTextBox"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="CompareValidatorStart" runat="server" ErrorMessage="Fyll i ett heltal" Text="*" ControlToValidate="StartTempTextBox" Display="Dynamic" Type="Integer" Operator="DataTypeCheck"></asp:CompareValidator>
-                    <%--<asp:RangeValidator ID="RangeValidatorStart" runat="server" ErrorMessage="" Text="*" Display="Dynamic" ValidationGroup="TempInput" ControlToValidate="StartTempTextBox" ></asp:RangeValidator>--%>
                 </div>
 
                  <%-- CONTROL FOR END TEMP --%>
                 <div class="formItems">
                     <p>Sluttemperatur:</p>
                     <asp:TextBox ID="EndTempTextBox" runat="server"></asp:TextBox>
+
+                    <%-- Validation --%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorEnd" runat="server" ErrorMessage="Fyll i en sluttemperatur." Text="*" Display="Dynamic" ControlToValidate="EndTempTextBox"></asp:RequiredFieldValidator>
-                    <asp:CompareValidator ID="CompareValidatorEnd" runat="server" ErrorMessage="Fyll i ett heltal." Text="*" ControlToValidate="EndTempTextBox" Display="Dynamic" Type="Integer" Operator="DataTypeCheck"></asp:CompareValidator>
-                    <%--<asp:RangeValidator ID="RangeValidatorEnd" runat="server" ErrorMessage="" Text="*" Display="Dynamic" ControlToValidate="EndTempTextBox"  ></asp:RangeValidator>--%>
+                    <asp:CompareValidator ID="CompareValidatorEnd" runat="server" ErrorMessage="Fyll i ett heltal." Text="*" ControlToValidate="EndTempTextBox" Display="None" Type="Integer" Operator="DataTypeCheck"></asp:CompareValidator>
+                    <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Värdet måste vara större än Starttemperaturen." Text="*" ControlToValidate="EndTempTextBox" ControlToCompare="StartTempTextBox" Display="Dynamic" Type="Integer" Operator="GreaterThanEqual"></asp:CompareValidator>
                 </div>
 
                  <%-- CONTROL FOR SCALE-RATE --%>
                 <div class="formItems">
                     <p>Temperatursteg:</p>
                     <asp:TextBox ID="TempScaleTextBox" runat="server"></asp:TextBox>
+
+                    <%-- Validation --%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorScale" runat="server" ErrorMessage="Fyll i ett temperaturssteg." Text="*" Display="Dynamic" ControlToValidate="TempScaleTextBox"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="CompareValidatorScale" runat="server" ErrorMessage="Fyll i ett heltal." Text="*" ControlToValidate="TempScaleTextBox" Display="Dynamic" Type="Integer" Operator="DataTypeCheck"></asp:CompareValidator>
-                    <%--<asp:RangeValidator ID="RangeValidatorScale" runat="server" ErrorMessage="Temperatursteget måste ligga mellan 1 och 100." Text="*" Display="Dynamic" MinimumValue="1" MaximumValue="100" ControlToValidate="TempScaleTextBox" ></asp:RangeValidator>--%>
+                    <asp:RangeValidator ID="RangeValidatorScale" runat="server" ErrorMessage="Temperatursteget måste ligga mellan 1 och 100." Text="*" Display="Dynamic" MinimumValue="1" MaximumValue="100" Type="Integer" ControlToValidate="TempScaleTextBox"></asp:RangeValidator>
                 </div>
 
                 <%-- RADIO BUTTON CONROLS --%>
@@ -57,8 +62,14 @@
             </form>
         </div>
         <div id="rightColumn">
-            <asp:Table ID="TempConvertResultTable" runat="server" Visible="false"></asp:Table>
+            <asp:Table ID="TempConvertResultTable" runat="server" Visible="false">
+                <asp:TableHeaderRow>
+                    <asp:TableHeaderCell ID="FirstHeaderCell">&deg;C</asp:TableHeaderCell>
+                    <asp:TableHeaderCell ID="SecondHeaderCell">&deg;F</asp:TableHeaderCell>
+                </asp:TableHeaderRow>
+            </asp:Table>
         </div>
+        <div class="clear"></div>
     </div>
 </body>
 </html>

@@ -13,7 +13,6 @@ namespace TempConverter
         protected void Page_Load(object sender, EventArgs e)
         {
             // Empty
-           
         }
 
         protected void ConvertButton_Click(object sender, EventArgs e)
@@ -21,51 +20,76 @@ namespace TempConverter
             if (IsValid)
             {
                 // Initialize startTemp.
-                int startTemp = int.Parse(StartTempTextBox.Text);
+                var startTemp = int.Parse(StartTempTextBox.Text);
 
                 // Initialize maxTemp as loop index maximum value.
-                int maxTemp = int.Parse(EndTempTextBox.Text);
-
-                // TempToConvert is the current temperature to send to TemperatureConverter.
-                int tempToConvert;
+                var maxTemp = int.Parse(EndTempTextBox.Text);
 
                 // Initialize TSR (TemperatureScaleRate) as loop incrementer.
-                int TSR = int.Parse(TempScaleTextBox.Text);
+                var TSR = int.Parse(TempScaleTextBox.Text);
 
                 // Initialize calculated value for number of table rows.
-                int rowCnt = maxTemp/TSR;
+                var rowCnt = maxTemp/TSR;
 
-                int cellsPerRow = 2;
+                var cellsPerRow = 2;
 
-
-                for (int rows = startTemp; rows <= maxTemp; rows += TSR)
+                if (FC_RadioButton.Checked)
                 {
-                    // Calculate current temp to convert.
-                    //tempToConvert = rows == 0 ? startTemp : startTemp += TSR;
-                    tempToConvert = rows;
+                    FirstHeaderCell.Text = "&deg;F";
+                    SecondHeaderCell.Text = "&deg;C";
+                }
+                // Render table header with content.
+                //TableHeaderRow tableHeaderRow = new TableHeaderRow();
+                //TempConvertResultTable.Rows.Add(tableHeaderRow);
+                //for (int i = 0; i < cellsPerRow; i++)
+                //{
+                //    TableHeaderCell thc = new TableHeaderCell();
 
+                    
+                //    if (CF_RadioButton.Checked && i == 0)
+                //    {
+                //        thc.Text = "&deg;C";
+                //    }
+                //    else if(CF_RadioButton.Checked)
+                //    {
+                //        thc.Text = "&deg;F";
+                //    }
+
+                //    if (FC_RadioButton.Checked && i == 0)
+                //    {
+                //        thc.Text = "&deg;F";
+                //    }
+                //    else if (FC_RadioButton.Checked)
+                //    {
+                //        thc.Text = "&deg;C";
+                //    }
+                //    tableHeaderRow.Cells.Add(thc);
+                //}
+
+                // Render table, table rows and table cells with content.
+                for (int temp = startTemp; temp <= maxTemp; temp += TSR)
+                {
                     // Create new table row and add it to the table.
                     TableRow tr = new TableRow();
                     TempConvertResultTable.Rows.Add(tr);
 
                     // Create the first cell for each row.
                     TableCell firstColumnTc = new TableCell();
-                    firstColumnTc.Text = tempToConvert.ToString();
+                    firstColumnTc.Text = temp.ToString();
                     tr.Cells.Add(firstColumnTc);
 
                     // Create the remaining cells
                     for (int cells = 0; cells < cellsPerRow - 1; cells++)
                     {
-                        TableCell tc = new TableCell();
-                        int cellInput = CF_RadioButton.Checked ? cellInput = tempToConvert.CelsiusToFahrenheit() : cellInput = tempToConvert.FahrenheitToCelcius();
+                        TableCell secondColumnTc = new TableCell();
 
-                        tc.Text = cellInput.ToString();
-                        tr.Cells.Add(tc);
+                        secondColumnTc.Text = CF_RadioButton.Checked ?
+                            secondColumnTc.Text = temp.CelsiusToFahrenheit().ToString()
+                            : secondColumnTc.Text = temp.FahrenheitToCelcius().ToString();
+                        tr.Cells.Add(secondColumnTc);
                     }
                 }
                 TempConvertResultTable.Visible = true;
-                //int degreesF = int.Parse(StartTempTextBox.Text).CelsiusToFahrenheit();
-                //int degreesC = int.Parse(StartTempTextBox.Text).FahrenheitToCelcius();
             }
         }
     }
