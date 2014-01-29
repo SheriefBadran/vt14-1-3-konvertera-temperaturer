@@ -19,7 +19,7 @@
                 <%-- CONTROL FOR START TEMP --%>
                 <div class="formItems">
                     <p>Starttemperatur:</p>
-                    <asp:TextBox ID="StartTempTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="StartTempTextBox" autofocus="autofocus" runat="server"></asp:TextBox>
 
                     <%-- Validation --%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorStart" runat="server" ErrorMessage="Fyll i en starttemperatur." Text="*" Display="Dynamic" ControlToValidate="StartTempTextBox"></asp:RequiredFieldValidator>
@@ -34,7 +34,7 @@
                     <%-- Validation --%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorEnd" runat="server" ErrorMessage="Fyll i en sluttemperatur." Text="*" Display="Dynamic" ControlToValidate="EndTempTextBox"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="CompareValidatorEnd" runat="server" ErrorMessage="Fyll i ett heltal." Text="*" ControlToValidate="EndTempTextBox" Display="None" Type="Integer" Operator="DataTypeCheck"></asp:CompareValidator>
-                    <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Värdet måste vara större än Starttemperaturen." Text="*" ControlToValidate="EndTempTextBox" ControlToCompare="StartTempTextBox" Display="Dynamic" Type="Integer" Operator="GreaterThanEqual"></asp:CompareValidator>
+                    <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Sluttemperaturen måste vara större än Starttemperaturen." Text="*" ControlToValidate="EndTempTextBox" ControlToCompare="StartTempTextBox" Display="Dynamic" Type="Integer" Operator="GreaterThanEqual"></asp:CompareValidator>
                 </div>
 
                  <%-- CONTROL FOR SCALE-RATE --%>

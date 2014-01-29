@@ -19,78 +19,52 @@ namespace TempConverter
         {
             if (IsValid)
             {
-                // Initialize startTemp.
-                var startTemp = int.Parse(StartTempTextBox.Text);
+                if (!CF_RadioButton.Checked && !FC_RadioButton.Checked)
+                {
+                    ModelState.AddModelError(String.Empty, "Ett fel har inträffat med alternativknapparna!");
+                }
 
-                // Initialize maxTemp as loop index maximum value.
-                var maxTemp = int.Parse(EndTempTextBox.Text);
-
-                // Initialize TSR (TemperatureScaleRate) as loop incrementer.
+                // Initialize TSR (TemperatureScaleRate) as loop incrementer for the Temperature class.
                 var TSR = int.Parse(TempScaleTextBox.Text);
+                bool convDirection = CF_RadioButton.Checked ? convDirection = true : convDirection = false;
 
-                // Initialize calculated value for number of table rows.
-                var rowCnt = maxTemp/TSR;
-
-                var cellsPerRow = 2;
-
-                if (FC_RadioButton.Checked)
+                try
                 {
-                    FirstHeaderCell.Text = "&deg;F";
-                    SecondHeaderCell.Text = "&deg;C";
-                }
-                // Render table header with content.
-                //TableHeaderRow tableHeaderRow = new TableHeaderRow();
-                //TempConvertResultTable.Rows.Add(tableHeaderRow);
-                //for (int i = 0; i < cellsPerRow; i++)
-                //{
-                //    TableHeaderCell thc = new TableHeaderCell();
+                    Temperature temperature = new Temperature(int.Parse(StartTempTextBox.Text), int.Parse(EndTempTextBox.Text), TSR, convDirection);
 
-                    
-                //    if (CF_RadioButton.Checked && i == 0)
-                //    {
-                //        thc.Text = "&deg;C";
-                //    }
-                //    else if(CF_RadioButton.Checked)
-                //    {
-                //        thc.Text = "&deg;F";
-                //    }
-
-                //    if (FC_RadioButton.Checked && i == 0)
-                //    {
-                //        thc.Text = "&deg;F";
-                //    }
-                //    else if (FC_RadioButton.Checked)
-                //    {
-                //        thc.Text = "&deg;C";
-                //    }
-                //    tableHeaderRow.Cells.Add(thc);
-                //}
-
-                // Render table, table rows and table cells with content.
-                for (int temp = startTemp; temp <= maxTemp; temp += TSR)
-                {
-                    // Create new table row and add it to the table.
-                    TableRow tr = new TableRow();
-                    TempConvertResultTable.Rows.Add(tr);
-
-                    // Create the first cell for each row.
-                    TableCell firstColumnTc = new TableCell();
-                    firstColumnTc.Text = temp.ToString();
-                    tr.Cells.Add(firstColumnTc);
-
-                    // Create the remaining cells
-                    for (int cells = 0; cells < cellsPerRow - 1; cells++)
+                    if (FC_RadioButton.Checked)
                     {
-                        TableCell secondColumnTc = new TableCell();
-
-                        secondColumnTc.Text = CF_RadioButton.Checked ?
-                            secondColumnTc.Text = temp.CelsiusToFahrenheit().ToString()
-                            : secondColumnTc.Text = temp.FahrenheitToCelcius().ToString();
-                        tr.Cells.Add(secondColumnTc);
+                        FirstHeaderCell.Text = "&deg;F";
+                        SecondHeaderCell.Text = "&deg;C";
                     }
+
+                    RenderResultTable(temperature);
                 }
-                TempConvertResultTable.Visible = true;
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(String.Empty, ex.Message);
+                }
             }
+        }
+
+        protected void RenderResultTable(Temperature temp)
+        {
+            Dictionary<int, int> tableContents = temp.CreateResultTableTemperatures();
+            foreach (var temperature in tableContents.Keys)
+            {
+                TableRow tr = new TableRow();
+                TempConvertResultTable.Rows.Add(tr);
+
+                // Create the first cell for each row.
+                TableCell firstColumnTc = new TableCell();
+                firstColumnTc.Text = temperature.ToString();
+                tr.Cells.Add(firstColumnTc);
+
+                TableCell secondColumnTc = new TableCell();
+                secondColumnTc.Text = tableContents[temperature].ToString();
+                tr.Cells.Add(secondColumnTc);
+            }
+            TempConvertResultTable.Visible = true;
         }
     }
 }

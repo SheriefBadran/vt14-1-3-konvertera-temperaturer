@@ -89,11 +89,11 @@ table {
     border: 3px solid #031931;
     margin: 20px 0 20px;
     width: 200px;
+    background-color: #184574;
 }
 
 thead {
     border: 1px solid #4B81BA;
-    background-color: #08294B;
     font-weight: bold;
     text-align: center;
     color: #fff;
@@ -109,10 +109,6 @@ td {
     width: 100px;
     text-align: center;
     color: #fff;
-}
-
-tr {
-    background-color: #184574;
 }
 
 

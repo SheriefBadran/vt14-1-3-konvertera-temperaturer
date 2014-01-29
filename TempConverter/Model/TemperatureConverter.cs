@@ -10,12 +10,13 @@ namespace TempConverter.Model
         // Static Methods.
         public static int CelsiusToFahrenheit(this int degreesC)
         {
-            return degreesC * 9/5 + 32;
+            return (int)(degreesC * 1.8 + 32);
         }
 
         public static int FahrenheitToCelcius(this int degreesF)
         {
-            return (degreesF - 32) * 5/9;
+            // d for double division.
+            return (int)Math.Round((degreesF - 32) * 5/9d);
         }
     }
 }
